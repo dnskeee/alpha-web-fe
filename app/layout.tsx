@@ -24,10 +24,8 @@ export const viewport: Viewport = {
 const noFoucScript = `
 (function() {
   try {
-    var p = localStorage.getItem('theme') || 'system';
-    var d = p === 'system'
-      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-      : p;
+    var p = localStorage.getItem('theme');
+    var d = p === 'dark' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', d);
   } catch (e) {
     document.documentElement.setAttribute('data-theme', 'light');

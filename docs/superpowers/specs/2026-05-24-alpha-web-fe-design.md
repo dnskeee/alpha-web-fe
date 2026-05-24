@@ -166,6 +166,7 @@ No client-readable auth state. `AuthContext` learns the user via `GET /api/auth/
 |---|---|
 | `POST /api/auth/login` | Forwards `{username, password}` to upstream `/auth/login`. On success: set `at` + `rt` cookies, return `{userId, username, email, isEmailVerified, isGuest}` (no tokens in JSON). |
 | `POST /api/auth/register` | Same pattern. |
+| `POST /api/auth/guest` | Forwards to upstream `/auth/guest` (no body). Sets `at` + `rt` cookies, returns the same user shape. Used by `withAuthOrGuest` / `ensureGuest` for unauthenticated catalog browsing. |
 | `POST /api/auth/logout` | Clear `at` + `rt`; optionally call upstream revoke. |
 | `POST /api/auth/refresh` | Read `rt`, forward to upstream refresh, rotate both cookies. Used internally by the proxy on 401. |
 | `GET /api/auth/me` | Read `at`, return user shape. Used by `AuthContext` on app start. |
@@ -190,6 +191,7 @@ No client-readable auth state. `AuthContext` learns the user via `GET /api/auth/
 - On mount: `GET /api/auth/me` instead of reading SecureStore. 200 → user, 401 → null.
 - `login()` / `register()` / `logout()` call the corresponding `/api/auth/*` route, then set context state from the response.
 - `accessToken` field removed from context (not needed in JS).
+- `withAuth`, `withAuthOrGuest`, `callMaybeAuthed`, `ensureGuest` are kept (consumers depend on them) but their signatures simplify: the callback is `() => Promise<T>` instead of `(token: string) => Promise<T>`. Consumers change from `withAuth(t => api.foo.bar(x, t))` to `withAuth(() => api.foo.bar(x))` — mechanical port. `ensureGuest()` keeps returning a string (use a sentinel like `'cookie'` since callers ignore the value when not passing it to API calls) — or change return type to `Promise<void>` and update the two callers. The plan prefers the latter (cleaner).
 - Consumers that read `user`, `isLoading`, `login`, `logout` are unchanged.
 
 ### 7.7 Backend env

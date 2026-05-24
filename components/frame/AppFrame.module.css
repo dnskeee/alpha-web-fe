@@ -1,0 +1,9 @@
+.frame {
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  position: relative;
+  overflow-x: hidden;
+}

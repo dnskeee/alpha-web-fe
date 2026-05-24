@@ -1,0 +1,72 @@
+.topBar {
+  padding: 14px 20px 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.backButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background-color: var(--color-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.backButton:active {
+  opacity: 0.7;
+}
+
+.center {
+  flex: 1;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 14px;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.pill {
+  background-color: var(--color-bg-card);
+  border-radius: 999px;
+  padding: 6px 12px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.pillText {
+  font-size: 12px;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.segments {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 4px 16px 16px;
+}
+
+.segment {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}

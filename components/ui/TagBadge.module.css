@@ -1,0 +1,36 @@
+.base {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.progress {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.locked {
+  background-color: var(--color-overlay);
+  color: var(--color-muted);
+}
+
+.badge {
+  background-color: var(--color-badge-bg);
+  color: var(--color-badge-fg);
+}
+
+.success {
+  background-color: var(--color-success-dim);
+  color: var(--color-success);
+}
+
+.danger {
+  background-color: var(--color-red);
+  color: #ffffff;
+}

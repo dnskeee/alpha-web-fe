@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.dot {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}

@@ -1,0 +1,45 @@
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.bulletDo {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.bulletDont {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.text {
+  flex: 1;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 20px;
+}

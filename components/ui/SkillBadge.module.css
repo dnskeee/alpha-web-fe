@@ -1,0 +1,24 @@
+.pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background-color: var(--color-bg-card);
+  align-self: flex-start;
+  box-shadow: var(--shadow-chip);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink);
+}

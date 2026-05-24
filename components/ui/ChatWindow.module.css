@@ -1,0 +1,131 @@
+.chatWindow {
+  background-color: var(--color-card-soft);
+  border-radius: 20px;
+  padding: 18px;
+  overflow: visible;
+  position: relative;
+}
+
+.pointer {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  background-color: var(--color-card-soft);
+  transform: rotate(45deg);
+}
+
+.chatHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarText {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent-ink);
+}
+
+.avatarName {
+  display: block;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.onlineStatus {
+  display: block;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.messagesScroll {
+  padding-top: 12px;
+  overflow-y: auto;
+}
+
+.messageRow {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.messageRowLeft {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.messageRowRight {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 16px;
+}
+
+.bubbleHer {
+  background-color: var(--color-bg-card);
+  border-bottom-left-radius: 4px;
+}
+
+.bubbleYou {
+  background-color: var(--color-accent);
+  border-bottom-right-radius: 4px;
+}
+
+.bubbleText {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-ink);
+}
+
+.bubbleTextYou {
+  color: var(--color-accent-ink);
+  font-weight: 500;
+}
+
+.typingRow {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 8px 4px;
+}
+
+.typingDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 3.5px;
+  background-color: var(--color-muted);
+}
+
+.emptyText {
+  display: block;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 20px 0;
+  line-height: 24px;
+}

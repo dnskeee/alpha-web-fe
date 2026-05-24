@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.card {
+  flex: 1;
+  min-width: 45%;
+  padding: 12px;
+  background: var(--color-card-soft);
+  border-radius: 14px;
+}
+
+.name {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.track {
+  height: 4px;
+  background: var(--color-track);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 4px;
+  border-radius: 2px;
+}

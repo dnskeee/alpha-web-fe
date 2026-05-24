@@ -1,0 +1,173 @@
+.progressRow {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.progressDot {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-border);
+}
+
+.progressDotActive {
+  background: var(--color-accent);
+}
+
+.categoryLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-blue);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.badCard {
+  padding: 16px;
+  background: var(--color-red-dim);
+  border: 1px solid color-mix(in srgb, var(--color-red) 13%, transparent);
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.badLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-red);
+}
+
+.messageRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.messageEmoji {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.badBubble {
+  flex: 1;
+  background: var(--color-bg-card2);
+  padding: 10px;
+  border-radius: 4px 14px 14px 14px;
+}
+
+.badBubbleText {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.57;
+  margin: 0;
+}
+
+.revealBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-accent-dim);
+  border: 1.5px dashed color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent-text);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.revealBtn:hover {
+  opacity: 0.8;
+}
+
+.goodCard {
+  padding: 16px;
+  background: var(--color-success-dim);
+  border: 1px solid color-mix(in srgb, var(--color-success) 13%, transparent);
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.goodLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.goodBubble {
+  flex: 1;
+  background: var(--color-success-dim);
+  padding: 10px;
+  border-radius: 4px 14px 14px 14px;
+}
+
+.goodBubbleText {
+  font-size: 14px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  line-height: 1.57;
+  margin: 0;
+}
+
+.lessonBox {
+  padding: 14px;
+  background: var(--color-bg-card2);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-blue);
+  margin-bottom: 14px;
+}
+
+.lessonRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.lessonText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.69;
+  margin: 0;
+}
+
+.nextBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+.doneRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.doneText {
+  font-size: 13px;
+  color: var(--color-success);
+  font-weight: 600;
+}

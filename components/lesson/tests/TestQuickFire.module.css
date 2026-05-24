@@ -1,0 +1,227 @@
+.introContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.introIconWrap {
+  margin-bottom: 12px;
+}
+
+.introTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 8px;
+}
+
+.introDesc {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  text-align: center;
+  line-height: 1.54;
+  margin: 0 0 20px;
+}
+
+.startBtn {
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.startBtn:hover {
+  opacity: 0.85;
+}
+
+.timerBar {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.timerFill {
+  height: 4px;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.counter {
+  font-size: 12px;
+  color: var(--color-text-dim);
+}
+
+.rightRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.streakRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.streak {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-warning);
+}
+
+.scoreText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-success);
+}
+
+.statementCard {
+  padding: 28px;
+  background: var(--color-bg-card2);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  margin-bottom: 16px;
+  border: 1.5px solid;
+  transition: border-color 0.2s;
+}
+
+.statementText {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.53;
+  text-align: center;
+  margin: 0;
+}
+
+.explainBox {
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.explainText {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.67;
+  margin: 0;
+}
+
+.timeoutBox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.timeoutRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeoutText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-warning);
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.mythBtn {
+  flex: 1;
+  padding: 16px;
+  background: var(--color-red-dim);
+  border: 2px solid color-mix(in srgb, var(--color-red) 20%, transparent);
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-red);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.mythBtn:hover {
+  opacity: 0.8;
+}
+
+.truthBtn {
+  flex: 1;
+  padding: 16px;
+  background: var(--color-success-dim);
+  border: 2px solid color-mix(in srgb, var(--color-success) 20%, transparent);
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-success);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.truthBtn:hover {
+  opacity: 0.8;
+}
+
+.nextBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.85;
+}
+
+.doneContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.doneIconWrap {
+  margin-bottom: 8px;
+}
+
+.doneScore {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.doneLabel {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  margin: 0 0 16px;
+}

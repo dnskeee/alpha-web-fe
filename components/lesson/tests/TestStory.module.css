@@ -1,0 +1,130 @@
+.pathRow {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.pathDot {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-text-dim);
+  opacity: 0.35;
+}
+
+.pathDotActive {
+  background: var(--color-accent);
+  opacity: 1;
+}
+
+.sceneBox {
+  padding: 20px;
+  background: var(--color-bg-card2);
+  border-radius: 16px;
+  border-left: 3px solid;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+.sceneText {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  line-height: 1.73;
+  margin: 0;
+}
+
+.endBadge {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.endBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.endBadgeText {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.lessonBox {
+  padding: 14px;
+  background: var(--color-bg-card2);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.lessonRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.lessonText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.69;
+  margin: 0;
+}
+
+.restartBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.restartBtn:hover {
+  opacity: 0.85;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choiceBtn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: var(--color-bg-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.choiceBtn:hover {
+  opacity: 0.8;
+}
+
+.choiceLetter {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent-text);
+  min-width: 18px;
+  flex-shrink: 0;
+}
+
+.choiceText {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  line-height: 1.57;
+}

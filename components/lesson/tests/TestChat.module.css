@@ -1,0 +1,108 @@
+.introContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.context {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  text-align: center;
+  line-height: 1.54;
+  margin: 0 0 16px;
+}
+
+.startBtn {
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.startBtn:hover {
+  opacity: 0.85;
+}
+
+.chatWrapper {
+  margin-bottom: 12px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.choiceLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-dim);
+  text-align: center;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+.choiceBtn {
+  display: block;
+  width: 100%;
+  background: var(--color-bg-card2);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.54;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.choiceBtn:hover {
+  opacity: 0.8;
+}
+
+.verdict {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid;
+}
+
+.verdictHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.verdictTitle {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.verdictText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.69;
+  margin: 0 0 12px;
+}
+
+.resetBtn {
+  background: var(--color-bg-card2);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.resetBtn:hover {
+  opacity: 0.75;
+}

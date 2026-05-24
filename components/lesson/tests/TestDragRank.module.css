@@ -1,0 +1,138 @@
+.instruction {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.54;
+  margin: 0 0 14px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--color-bg-card2);
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  cursor: grab;
+}
+
+.row:active {
+  cursor: grabbing;
+}
+
+.rowCorrect {
+  background: var(--color-success-dim);
+  border-color: color-mix(in srgb, var(--color-success) 27%, transparent);
+  cursor: default;
+}
+
+.rowWrong {
+  background: var(--color-red-dim);
+  border-color: color-mix(in srgb, var(--color-red) 27%, transparent);
+  cursor: default;
+}
+
+.rankBadge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rankText {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-dim);
+}
+
+.itemIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.itemText {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.dragHandle {
+  font-size: 16px;
+  color: var(--color-text-dim);
+  opacity: 0.5;
+  cursor: grab;
+}
+
+.checkBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.checkBtn:hover {
+  opacity: 0.85;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.resultScore {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.insightBox {
+  padding: 14px;
+  background: var(--color-bg-card2);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.insightText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.69;
+  margin: 0;
+}
+
+.resetBtn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background: var(--color-bg-card2);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.resetBtn:hover {
+  opacity: 0.75;
+}

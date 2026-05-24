@@ -81,11 +81,12 @@ export default function HomeScreen() {
         if (!cancelled && cached) {
           dispatch({ type: 'streak_loaded', streakDays: cached.streakDays, currentWeek: cached.currentWeek });
         }
-        if (!user || user.isGuest) return;
-        const fresh = await withAuth(() => api.streak.get()).catch(() => null);
-        if (!cancelled && fresh) {
-          dispatch({ type: 'streak_loaded', streakDays: fresh.streakDays, currentWeek: fresh.currentWeek });
-          await writeStreakCache(fresh);
+        if (user && !user.isGuest) {
+          const fresh = await withAuth(() => api.streak.get()).catch(() => null);
+          if (!cancelled && fresh) {
+            dispatch({ type: 'streak_loaded', streakDays: fresh.streakDays, currentWeek: fresh.currentWeek });
+            await writeStreakCache(fresh);
+          }
         }
       } catch {
         // keep cached/zero state silently

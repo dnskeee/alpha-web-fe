@@ -1,3 +1,4 @@
+import 'server-only';
 import { readAccessToken, readRefreshToken, setAuthCookies, clearAuthCookies } from '@/lib/auth/cookies';
 
 const UPSTREAM = process.env.ALPHA_API_URL ?? 'https://api.beprime.pro/api/v1';

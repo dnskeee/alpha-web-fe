@@ -1,5 +1,6 @@
 .card {
   background-color: var(--color-accent-soft) !important;
+  margin: 12px 16px 0;
 }
 
 .top {

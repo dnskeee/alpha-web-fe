@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import { BPCard } from './BPCard';
 import { SunIcon } from '@/components/icons/SunIcon';
@@ -15,7 +16,7 @@ interface Props {
 
 export function BPThoughtCard({ className }: Props) {
   return (
-    <BPCard className={className}>
+    <BPCard className={clsx(s.wrapper, className)}>
       <div className={s.header}>
         <div className={s.iconWrap}>
           <SunIcon size={14} color="var(--color-accent)" />

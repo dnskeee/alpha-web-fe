@@ -10,7 +10,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { api } from '@/lib/api';
 import { ApiLessonDetail } from '@/types/api';
 import { LessonModule } from '@/types/lesson';
-import { getReadyHint } from '@/components/lesson/cardReadiness';
+import { INSTANT_READY_TYPES, getReadyHint } from '@/components/lesson/cardReadiness';
 import s from './page.module.css';
 
 export default function LessonScreen() {
@@ -55,7 +55,7 @@ export default function LessonScreen() {
   const lesson = lessonData?.body as LessonModule | null;
   const card = lesson?.cards[currentCard];
 
-  const currentCardReady = completedCards.has(currentCard);
+  const currentCardReady = completedCards.has(currentCard) || (!!card && INSTANT_READY_TYPES.has(card.type));
 
   const markCurrentReady = useCallback(() => {
     setCompletedCards(prev => (prev.has(currentCard) ? prev : new Set(prev).add(currentCard)));

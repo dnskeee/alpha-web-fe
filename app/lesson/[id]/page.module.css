@@ -1,0 +1,108 @@
+.safe {
+  min-height: 100dvh;
+  background: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  position: relative;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFound {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundText {
+  color: var(--color-muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cardContent {
+  padding: 4px 16px 96px;
+}
+
+.navWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px 22px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-dark) 50%);
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.navBack {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--color-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-chip);
+  flex-shrink: 0;
+  padding: 0;
+  transition: opacity 0.15s;
+}
+
+.navBack:active {
+  opacity: 0.7;
+}
+
+.navNextWrap {
+  flex: 1;
+}
+
+.completingBox {
+  height: 52px;
+  border-radius: 16px;
+  background: var(--color-btn-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--color-track);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

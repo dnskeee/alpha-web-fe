@@ -1,0 +1,50 @@
+.safe {
+  min-height: 100dvh;
+  background: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 40px;
+}
+
+.titleBlock {
+  padding: 4px 6px 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -1px;
+  line-height: 32px;
+}
+
+.speakerBtn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.speakerCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.speakerName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+}

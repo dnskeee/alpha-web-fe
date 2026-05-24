@@ -1,0 +1,36 @@
+.overlay {
+  min-height: 100dvh;
+  background: var(--color-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -0.6px;
+}
+
+.body {
+  margin: 0 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+  line-height: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+}

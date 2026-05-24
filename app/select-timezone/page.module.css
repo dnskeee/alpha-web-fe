@@ -1,0 +1,60 @@
+.safe {
+  min-height: 100dvh;
+  background: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 40px;
+}
+
+.tzBtn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tzCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.tzIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tzText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tzLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.tzDisplay {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-muted);
+}

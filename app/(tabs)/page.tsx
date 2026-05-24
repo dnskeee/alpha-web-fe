@@ -81,7 +81,7 @@ export default function HomeScreen() {
         if (!cancelled && cached) {
           dispatch({ type: 'streak_loaded', streakDays: cached.streakDays, currentWeek: cached.currentWeek });
         }
-        if (user && !user.isGuest) {
+        if (user) {
           const fresh = await withAuth(() => api.streak.get()).catch(() => null);
           if (!cancelled && fresh) {
             dispatch({ type: 'streak_loaded', streakDays: fresh.streakDays, currentWeek: fresh.currentWeek });
@@ -118,14 +118,13 @@ export default function HomeScreen() {
   const hasProgress = !!course && course.completedLessons > 0;
   const activeModule = hasProgress ? pickActiveModule(modules) : null;
   const isRegistered = !!user && !user.isGuest;
-  const isAuthed = !!user && !user.isGuest;
 
   return (
     <div className={s.safe}>
       <div className={s.scroll}>
         <BPTopBar
           showLogo
-          streak={isAuthed ? streakDays : undefined}
+          streak={user ? streakDays : undefined}
           onStreakPress={() => router.push('/streak')}
         />
 
@@ -142,7 +141,7 @@ export default function HomeScreen() {
 
         <BPThoughtCard />
 
-        {isAuthed && (
+        {user && (
           <BPStreakCard streakDays={streakDays} currentWeek={currentWeek} />
         )}
 

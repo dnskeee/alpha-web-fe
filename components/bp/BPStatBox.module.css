@@ -1,0 +1,47 @@
+.box {
+  background-color: var(--color-bg-card);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.highlight {
+  background-color: var(--color-accent);
+}
+
+.label {
+  display: block;
+  color: var(--color-muted);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.labelHighlight {
+  color: var(--color-accent-ink);
+  opacity: 0.7;
+}
+
+.value {
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--color-ink);
+  letter-spacing: -0.6px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.highlight .value {
+  color: var(--color-accent-ink);
+}
+
+.suffix {
+  font-size: 14px;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.suffixHighlight {
+  color: var(--color-accent-ink);
+}

@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 22px 10px;
+  margin-top: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.allLink {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  padding: 0 16px;
+  gap: 10px;
+  scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cardLink {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.card {
+  overflow: hidden;
+}
+
+.cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.info {
+  padding: 14px;
+}
+
+.lessons {
+  display: block;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+
+.modTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  height: 36px;
+  color: var(--color-ink);
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

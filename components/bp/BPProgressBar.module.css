@@ -1,0 +1,11 @@
+.track {
+  background-color: var(--color-track);
+  overflow: hidden;
+  width: 100%;
+}
+
+.fill {
+  height: 100%;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}

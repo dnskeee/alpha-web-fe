@@ -1,0 +1,13 @@
+.avatar {
+  background-image: url('/images/spritesheet.webp');
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: var(--color-accent-soft);
+  /* Animate frames 4–7 (row 1, cols 0–3) by stepping background-position-x */
+  animation: speakerCycle 0.32s steps(4, end) infinite;
+}
+
+@keyframes speakerCycle {
+  from { background-position-x: 0; }
+  to   { background-position-x: calc(-1 * var(--frame-width, 176px)); }
+}

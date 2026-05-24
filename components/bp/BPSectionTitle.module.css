@@ -1,0 +1,22 @@
+.kicker {
+  display: block;
+  color: var(--color-muted);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.noMargin {
+  margin-bottom: 0;
+}
+
+.display {
+  color: var(--color-ink);
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: -1px;
+  line-height: 32px;
+  margin: 0;
+}

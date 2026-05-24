@@ -1,0 +1,50 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.done {
+  background-color: var(--color-accent);
+}
+
+.active {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-soft);
+}
+
+.pending {
+  background-color: transparent;
+  border: 2px solid var(--color-line);
+}
+
+.number {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.active .number {
+  color: var(--color-accent-ink);
+}
+
+.connector {
+  width: 2px;
+  flex: 1;
+  min-height: 30px;
+  background-color: var(--color-line);
+}
+
+.connectorDone {
+  background-color: var(--color-accent);
+}

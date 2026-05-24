@@ -1,0 +1,7 @@
+.card {
+  background-color: var(--color-bg-card);
+}
+
+.shadow {
+  box-shadow: var(--shadow-card);
+}

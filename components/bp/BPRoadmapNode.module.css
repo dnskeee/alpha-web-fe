@@ -1,0 +1,29 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.number {
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+.connector {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  background-color: var(--color-line);
+}

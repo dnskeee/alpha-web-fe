@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Manrope } from 'next/font/google';
 import { AppFrame } from '@/components/frame/AppFrame';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { SpeakerProvider } from '@/contexts/SpeakerContext';
 import './globals.css';
 
 const manrope = Manrope({ subsets: ['latin', 'cyrillic'], variable: '--font-manrope', display: 'swap' });
@@ -41,7 +43,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <AppFrame>{children}</AppFrame>
+          <AuthProvider>
+            <SpeakerProvider>
+              <AppFrame>{children}</AppFrame>
+            </SpeakerProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

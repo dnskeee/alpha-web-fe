@@ -22,12 +22,18 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+function hasSessionMarker(): boolean {
+  if (typeof document === 'undefined') return false;
+  return document.cookie.split('; ').some((c) => c.startsWith('s='));
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const guestPromiseRef = useRef<Promise<void> | null>(null);
 
   useEffect(() => { (async () => {
+    if (!hasSessionMarker()) { setIsLoading(false); return; }
     try {
       const me = await api.auth.me();
       setUser(me);

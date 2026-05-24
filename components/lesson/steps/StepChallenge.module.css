@@ -1,0 +1,130 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: var(--color-warning-dim);
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.badgeEmoji {
+  font-size: 14px;
+}
+
+.badgeLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-warning);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+
+.taskBox {
+  padding: 18px;
+  background: var(--color-warning-dim);
+  border-radius: 18px;
+  margin-bottom: 14px;
+}
+
+.taskText {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  line-height: 1.65;
+  font-weight: 500;
+  margin: 0;
+}
+
+.tipBox {
+  padding: 12px;
+  background: var(--color-card-soft);
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.tipRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tipText {
+  font-size: 13px;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.tipBold {
+  font-weight: 600;
+}
+
+.bonusBox {
+  padding: 12px;
+  background: var(--color-accent-soft);
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.bonusRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bonusText {
+  font-size: 13px;
+  color: var(--color-accent);
+  line-height: 1.55;
+  opacity: 0.9;
+}
+
+.acceptButton {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-accent);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--color-accent-ink);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  transition: opacity 0.15s;
+}
+
+.acceptButton:hover {
+  opacity: 0.9;
+}
+
+.acceptButton:active {
+  opacity: 0.8;
+}
+
+.acceptedBox {
+  padding: 16px;
+  background: var(--color-success-dim);
+  border: 1.5px solid var(--color-success);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.acceptedRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.acceptedText {
+  color: var(--color-success);
+  font-size: 15px;
+  font-weight: 600;
+}

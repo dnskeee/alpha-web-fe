@@ -1,0 +1,56 @@
+.authorRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: var(--color-card-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarEmoji {
+  font-size: 20px;
+}
+
+.authorName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.authorSub {
+  font-size: 11px;
+  color: var(--color-text-dim);
+  margin: 0;
+}
+
+.quoteBox {
+  padding: 18px;
+  background: var(--color-bg-card2);
+  border-radius: 14px;
+  border-left: 3px solid var(--color-text-dim);
+}
+
+.quoteText {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  font-style: italic;
+  margin: 0;
+}
+
+.note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-text-dim);
+  line-height: 1.55;
+}

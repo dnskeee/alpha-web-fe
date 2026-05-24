@@ -1,0 +1,137 @@
+.progressBar {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.progressSegment {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.fearCard {
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--color-red-dim);
+  border: 1px solid var(--color-red);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.confidenceCard {
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--color-success-dim);
+  border: 1px solid var(--color-success);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.voiceHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.voiceAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fearAvatar {
+  background: var(--color-red-dim);
+}
+
+.confidenceAvatar {
+  background: var(--color-success-dim);
+}
+
+.voiceName {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.voiceSub {
+  display: block;
+  font-size: 10px;
+  color: var(--color-text-dim);
+}
+
+.voiceText {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+}
+
+.confidenceText {
+  font-weight: 500;
+}
+
+.revealBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--color-success-dim);
+  border: 1.5px dashed var(--color-success);
+  margin-bottom: 10px;
+  gap: 6px;
+  transition: opacity 0.15s;
+}
+
+.revealBtn:hover {
+  opacity: 0.85;
+}
+
+.revealBtnLabel {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.nextBtn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--color-accent);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+}
+
+.conclusionBox {
+  padding: 16px;
+  background: var(--color-bg-card2);
+  border-radius: 14px;
+  border-left: 3px solid var(--color-accent);
+  margin-top: 4px;
+}
+
+.conclusionText {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}

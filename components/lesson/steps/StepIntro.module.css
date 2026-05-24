@@ -1,0 +1,19 @@
+.emoji {
+  font-size: 40px;
+  margin: 0 0 16px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 14px;
+  line-height: 1.32;
+}
+
+.body {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}

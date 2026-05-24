@@ -1,0 +1,183 @@
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.dot {
+  height: 8px;
+  border-radius: 4px;
+  transition: width 0.2s, background 0.2s;
+}
+
+.splitCard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.fearHalf {
+  background: var(--color-red-dim);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.halfLabelText {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  align-self: stretch;
+}
+
+.fearEmoji {
+  font-size: 36px;
+  margin-top: 4px;
+}
+
+.fearText {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-card);
+  padding: 0 16px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+}
+
+.vsBadge {
+  padding: 4px 10px;
+  background: var(--color-bg-card2);
+  border-radius: 20px;
+  margin: 0 8px;
+}
+
+.vsText {
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--color-text-dim);
+  letter-spacing: 1px;
+}
+
+.realityHidden {
+  background: var(--color-success-dim);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid var(--color-success-dim);
+  width: 100%;
+  transition: opacity 0.15s;
+}
+
+.realityHidden:hover {
+  opacity: 0.85;
+}
+
+.revealPrompt {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.revealHint {
+  font-size: 11px;
+  color: var(--color-text-dim);
+}
+
+.realityHalf {
+  background: var(--color-success-dim);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--color-success-dim);
+}
+
+.realityEmoji {
+  font-size: 36px;
+  margin-top: 4px;
+}
+
+.realityText {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+}
+
+.statBadge {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  background: var(--color-bg-card2);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-top: 4px;
+}
+
+.statText {
+  font-size: 11px;
+  color: var(--color-text-dim);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.nextBtn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--color-accent);
+  border-radius: 14px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-btn-text);
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+}
+
+.doneBox {
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--color-success-dim);
+  border-radius: 14px;
+  border: 1px solid var(--color-success);
+  display: flex;
+  justify-content: center;
+}
+
+.doneRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.doneText {
+  font-size: 13px;
+  color: var(--color-success);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.55;
+}

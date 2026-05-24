@@ -134,10 +134,14 @@ function LessonRowItem({ lesson, index, isLast, lastDoneIdx }: LessonRowItemProp
   return (
     <div className={s.lessonRow}>
       <BPLessonNode number={index + 1} state={state} connector={!isLast} />
-      <button
-        type="button"
-        disabled={state === 'pending' && !isLocked}
+      <div
+        role="button"
+        tabIndex={state === 'pending' && !isLocked ? -1 : 0}
+        aria-disabled={state === 'pending' && !isLocked}
         onClick={handlePress}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePress(); }
+        }}
         className={cardClass}
       >
         <div className={s.lessonMeta}>
@@ -154,13 +158,13 @@ function LessonRowItem({ lesson, index, isLast, lastDoneIdx }: LessonRowItemProp
           <BPPillButton
             label="Начать →"
             variant="accent"
-            onClick={() => router.push(`/lesson/${lesson.id}`)}
+            onClick={(e) => { e.stopPropagation(); router.push(`/lesson/${lesson.id}`); }}
           />
         )}
         {state === 'done' && (
           <span className={s.doneLabel}>Пройдено ✓</span>
         )}
-      </button>
+      </div>
     </div>
   );
 }

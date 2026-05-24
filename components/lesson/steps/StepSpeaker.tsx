@@ -5,6 +5,8 @@ import { motion } from 'motion/react';
 import { SpeakerCard } from '@/types/lesson';
 import { SpeakerSpriteAvatar } from '@/components/bp/SpeakerSpriteAvatar';
 import { CheckIcon } from '@/components/icons/CheckIcon';
+import { useSpeaker } from '@/contexts/SpeakerContext';
+import { SPEAKERS, DEFAULT_SPEAKER_ID } from '@/constants/speakers';
 import s from './StepSpeaker.module.css';
 
 const TYPING_SPEED = 28;
@@ -16,6 +18,8 @@ interface Props {
 }
 
 export function StepSpeaker({ card, onReadyChange }: Props) {
+  const { speakerId } = useSpeaker();
+  const speakerAsset = (SPEAKERS.find((s) => s.id === speakerId) ?? SPEAKERS.find((s) => s.id === DEFAULT_SPEAKER_ID))?.asset ?? '/images/sprite_cat.webp';
   // phraseIdx drives which phrase is active. When it changes, we use
   // a key on the typing sub-component to auto-reset its state.
   const [phraseIdx, setPhraseIdx] = useState(0);
@@ -60,14 +64,14 @@ export function StepSpeaker({ card, onReadyChange }: Props) {
 
       {!allDone && (
         <div className={s.personCol}>
-          <SpeakerSpriteAvatar size={64} />
+          <SpeakerSpriteAvatar asset={speakerAsset} size={64} />
         </div>
       )}
 
       {allDone && (
         <>
           <div className={s.personCol}>
-            <SpeakerSpriteAvatar size={64} />
+            <SpeakerSpriteAvatar asset={speakerAsset} size={64} />
           </div>
           <div className={s.doneRow}>
             <div className={s.doneBadge}>

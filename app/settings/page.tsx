@@ -29,15 +29,24 @@ interface RowProps {
 
 function Row({ icon, label, hint, onClick, right, labelClassName }: RowProps) {
   const trailing = right === undefined ? <ForwardIcon size={16} color="var(--color-muted)" /> : right;
+  const interactive = !!onClick;
   return (
-    <button type="button" onClick={onClick} className={s.row}>
+    <div
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      onClick={onClick}
+      onKeyDown={interactive ? (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick?.(); }
+      } : undefined}
+      className={s.row}
+    >
       {icon ? <span className={s.rowIcon}>{icon}</span> : null}
       <span className={s.rowBody}>
         <span className={labelClassName ?? s.rowLabel}>{label}</span>
         {hint ? <span className={s.rowHint}>{hint}</span> : null}
       </span>
       {trailing}
-    </button>
+    </div>
   );
 }
 
@@ -57,11 +66,11 @@ function Group({ children }: { children: React.ReactNode }) {
 
 export default function SettingsPage() {
   const router = useRouter();
-  const { pref, setPref } = useTheme();
+  const { resolved, setPref } = useTheme();
   const { speakerId } = useSpeaker();
   const { user, logout } = useAuth();
 
-  const isDark = pref === 'dark';
+  const isDark = resolved === 'dark';
 
   const [currentOffset, setCurrentOffset] = useState<string>(getDeviceTimezoneOffset());
 

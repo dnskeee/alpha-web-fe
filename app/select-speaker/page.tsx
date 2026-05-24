@@ -37,7 +37,7 @@ export default function SelectSpeakerPage() {
               }}
             >
               <BPSoftCard className={s.speakerCard}>
-                <SpeakerSpriteAvatar size={44} />
+                <SpeakerSpriteAvatar asset={speaker.asset} size={44} />
                 <span className={s.speakerName}>{speaker.name}</span>
                 {selected && <CheckIcon size={20} color="var(--color-accent)" />}
               </BPSoftCard>

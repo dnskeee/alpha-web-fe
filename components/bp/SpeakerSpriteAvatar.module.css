@@ -1,5 +1,4 @@
 .avatar {
-  background-image: url('/images/spritesheet.webp');
   background-repeat: no-repeat;
   overflow: hidden;
   background-color: var(--color-accent-soft);

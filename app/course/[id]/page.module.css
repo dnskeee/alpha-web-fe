@@ -1,0 +1,83 @@
+.safe {
+  flex: 1;
+  background-color: var(--color-bg-dark);
+  min-height: 100%;
+}
+
+.scroll {
+  padding: 4px 22px 100px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--color-accent);
+  letter-spacing: -1.2px;
+  line-height: 36px;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--color-muted);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.moduleBtn {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.moduleBtn:hover .moduleCard {
+  opacity: 0.88;
+}
+
+.moduleCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.15s;
+}
+
+.colorDot {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.moduleInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.moduleTitle {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-ink);
+}
+
+.moduleMeta {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-top: 2px;
+}

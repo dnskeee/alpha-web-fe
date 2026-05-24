@@ -1,0 +1,265 @@
+.safe {
+  flex: 1;
+  background-color: var(--color-bg-dark);
+  min-height: 100%;
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 50vh;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-track);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorText {
+  color: var(--color-muted);
+  font-size: 14px;
+  text-align: center;
+  padding: 0 32px;
+  margin: 0;
+}
+
+.titleBlock {
+  padding: 4px 22px 14px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--color-accent);
+  letter-spacing: -1.2px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.tabWrap {
+  padding: 4px 16px 14px;
+}
+
+.tabBar {
+  background-color: var(--color-bg-card);
+  border-radius: 999px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabPill {
+  flex: 1;
+  padding: 8px;
+  border-radius: 999px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.tabPillActive {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.aboutContent {
+  padding: 4px 22px 100px;
+}
+
+.hookBlock {
+  margin-bottom: 18px;
+}
+
+.statementsBlock {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statementRow {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.crossBadge {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.statementText {
+  flex: 1;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-ink);
+  line-height: 20px;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--color-ink);
+  letter-spacing: -0.4px;
+  margin: 0 0 12px;
+}
+
+.outcomesBlock {
+  margin-bottom: 22px;
+}
+
+.outcomeRow {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.checkBadge {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.outcomeTexts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.outcomeTitle {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+.outcomeSub {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.descBlock {
+  margin-bottom: 22px;
+}
+
+.descText {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-ink);
+  line-height: 22px;
+  margin: 0 0 22px;
+}
+
+.expandBtn {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 22px;
+}
+
+.programLabel {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+
+.previewCard {
+  margin-bottom: 22px;
+}
+
+.previewRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.previewRow:hover {
+  opacity: 0.7;
+}
+
+.previewIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.previewTitle {
+  flex: 1;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.previewMore {
+  padding: 12px 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.statsChips {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}

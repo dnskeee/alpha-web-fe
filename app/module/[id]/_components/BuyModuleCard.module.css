@@ -1,0 +1,48 @@
+.card {
+  background-color: var(--color-accent-soft);
+}
+
+.discountRow {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.originalPrice {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.priceRow {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.effectivePrice {
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--color-ink);
+  letter-spacing: -1px;
+  line-height: 32px;
+}
+
+.accessLabel {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.registerHint {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-muted);
+  text-align: center;
+  margin: 10px 0 0;
+}

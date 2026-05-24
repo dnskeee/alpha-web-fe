@@ -1,0 +1,114 @@
+.screen {
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  flex: 1;
+  padding: 0 22px 40px;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -1.2px;
+  line-height: 1;
+  margin: 8px 0 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+  line-height: 20px;
+  margin: 0 0 22px;
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+  pointer-events: none;
+}
+
+.cells {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  cursor: text;
+}
+
+.cell {
+  width: 48px;
+  height: 56px;
+  border: 1.5px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.cellFocused {
+  border-color: var(--color-accent) !important;
+}
+
+.cellError {
+  border-color: var(--color-red) !important;
+}
+
+.cellText {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.errorMsg {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-red);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.successMsg {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.resendRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.resendBtn {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.resendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.resendingText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-muted);
+}

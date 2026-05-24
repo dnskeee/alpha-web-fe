@@ -1,0 +1,113 @@
+.screen {
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  flex: 1;
+  padding: 0 22px 40px;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -1.2px;
+  line-height: 1;
+  margin: 8px 0 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+  line-height: 20px;
+  margin: 0 0 22px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldWrap {
+  margin-bottom: 14px;
+}
+
+.fieldCard {
+  border: 1.5px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.fieldFocused {
+  border-color: var(--color-accent) !important;
+}
+
+.fieldError {
+  border-color: var(--color-red) !important;
+}
+
+.fieldInner {
+  padding: 8px 14px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fieldContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.fieldInput {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+
+.fieldInput::placeholder {
+  color: var(--color-muted);
+}
+
+.fieldErrorMsg {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-red);
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.switchRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.backLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

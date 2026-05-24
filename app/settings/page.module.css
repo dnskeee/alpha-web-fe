@@ -99,7 +99,7 @@
   border-radius: 14px;
   border: none;
   cursor: pointer;
-  background: var(--color-line);
+  background: rgba(127, 127, 127, 0.32);
   position: relative;
   transition: background 0.2s;
   flex-shrink: 0;
@@ -117,13 +117,13 @@
   width: 22px;
   height: 22px;
   border-radius: 11px;
-  background: var(--color-btn-fg);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.12);
   transition: transform 0.2s;
 }
 
 .toggle[data-on="true"] .toggleThumb {
   transform: translateX(20px);
-  background: var(--color-ink);
 }
 
 /* Guest card */

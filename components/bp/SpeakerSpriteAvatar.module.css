@@ -3,7 +3,7 @@
   overflow: hidden;
   background-color: var(--color-accent-soft);
   /* Animate frames 4–7 (row 1, cols 0–3) by stepping background-position-x */
-  animation: speakerCycle 0.64s steps(4, end) infinite;
+  animation: speakerCycle 0.36s steps(4, end) infinite;
 }
 
 @keyframes speakerCycle {

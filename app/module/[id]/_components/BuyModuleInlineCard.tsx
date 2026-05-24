@@ -20,7 +20,15 @@ export function BuyModuleInlineCard({ onPress, connector }: BuyModuleInlineCardP
         </div>
         {connector && <div className={s.connector} />}
       </div>
-      <button type="button" onClick={onPress} className={s.card}>
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={onPress}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPress(); }
+        }}
+        className={s.card}
+      >
         <p className={s.cardText}>
           Купите тему для полного доступа ко всем урокам
         </p>
@@ -28,9 +36,9 @@ export function BuyModuleInlineCard({ onPress, connector }: BuyModuleInlineCardP
           label="Перейти к покупке →"
           variant="accent"
           size="block"
-          onClick={onPress}
+          onClick={(e) => { e.stopPropagation(); onPress(); }}
         />
-      </button>
+      </div>
     </div>
   );
 }

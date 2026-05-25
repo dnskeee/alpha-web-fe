@@ -11,6 +11,7 @@ import { api } from '@/lib/api';
 import { ApiLessonDetail } from '@/types/api';
 import { LessonModule } from '@/types/lesson';
 import { INSTANT_READY_TYPES, getReadyHint } from '@/components/lesson/cardReadiness';
+import { PageContainer } from '@/components/frame/PageContainer';
 import s from './page.module.css';
 
 export default function LessonScreen() {
@@ -87,6 +88,23 @@ export default function LessonScreen() {
     }
   };
 
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goNext();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goPrev();
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCard, currentCardReady, lesson]);
+
   const handleComplete = async () => {
     if (!currentCardReady) return;
     try {
@@ -126,9 +144,11 @@ export default function LessonScreen() {
   if (loading) {
     return (
       <div className={s.safe}>
-        <div className={s.center}>
-          <div className={s.spinner} />
-        </div>
+        <PageContainer variant="reader">
+          <div className={s.center}>
+            <div className={s.spinner} />
+          </div>
+        </PageContainer>
       </div>
     );
   }
@@ -136,9 +156,11 @@ export default function LessonScreen() {
   if (notFound || !lesson || !card) {
     return (
       <div className={s.safe}>
-        <div className={s.notFound}>
-          <span className={s.notFoundText}>Урок не найден</span>
-        </div>
+        <PageContainer variant="reader">
+          <div className={s.notFound}>
+            <span className={s.notFoundText}>Урок не найден</span>
+          </div>
+        </PageContainer>
       </div>
     );
   }
@@ -148,78 +170,80 @@ export default function LessonScreen() {
 
   return (
     <div className={s.safe}>
-      <div
-        className={s.container}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <LessonHeader
-          lessonNumber={lesson.lessonNumber ?? lessonData?.sortOrder}
-          estimatedTime={lesson.estimatedTime}
-          totalCards={lesson.cards.length}
-          currentCard={currentCard}
-          title={lessonData?.title}
-          onBack={() => router.back()}
-        />
-
+      <PageContainer variant="reader">
         <div
-          ref={scrollRef}
-          className={s.scroll}
+          className={s.container}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          <div className={s.cardContent}>
-            <LessonCard
-              key={currentCard}
-              card={card}
-              xpReward={lesson.xpReward}
-              scrollRef={scrollRef}
-              onReadyChange={handleReadyChange}
-            />
-          </div>
-        </div>
+          <LessonHeader
+            lessonNumber={lesson.lessonNumber ?? lessonData?.sortOrder}
+            estimatedTime={lesson.estimatedTime}
+            totalCards={lesson.cards.length}
+            currentCard={currentCard}
+            title={lessonData?.title}
+            onBack={() => router.back()}
+          />
 
-        <div className={s.navWrap}>
-          <div className={s.nav}>
-            {currentCard > 0 && (
-              <button
-                type="button"
-                onClick={goPrev}
-                className={s.navBack}
-                aria-label="Назад"
-              >
-                <BackIcon size={20} color="var(--color-ink)" />
-              </button>
-            )}
-            {!isLast && (
-              <div className={s.navNextWrap}>
-                <BPPillButton
-                  size="block"
-                  variant="primary"
-                  label={currentCardReady ? 'Далее →' : (hint ?? 'Далее →')}
-                  onClick={goNext}
-                  disabled={!currentCardReady}
-                />
-              </div>
-            )}
-            {isLast && (
-              <div className={s.navNextWrap}>
-                {completing ? (
-                  <div className={s.completingBox}>
-                    <div className={s.spinner} />
-                  </div>
-                ) : (
+          <div
+            ref={scrollRef}
+            className={s.scroll}
+          >
+            <div className={s.cardContent}>
+              <LessonCard
+                key={currentCard}
+                card={card}
+                xpReward={lesson.xpReward}
+                scrollRef={scrollRef}
+                onReadyChange={handleReadyChange}
+              />
+            </div>
+          </div>
+
+          <div className={s.navWrap}>
+            <div className={s.nav}>
+              {currentCard > 0 && (
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  className={s.navBack}
+                  aria-label="Назад"
+                >
+                  <BackIcon size={20} color="var(--color-ink)" />
+                </button>
+              )}
+              {!isLast && (
+                <div className={s.navNextWrap}>
                   <BPPillButton
                     size="block"
                     variant="primary"
-                    label="Завершить урок"
-                    onClick={handleComplete}
-                    disabled={completing || !currentCardReady}
+                    label={currentCardReady ? 'Далее →' : (hint ?? 'Далее →')}
+                    onClick={goNext}
+                    disabled={!currentCardReady}
                   />
-                )}
-              </div>
-            )}
+                </div>
+              )}
+              {isLast && (
+                <div className={s.navNextWrap}>
+                  {completing ? (
+                    <div className={s.completingBox}>
+                      <div className={s.spinner} />
+                    </div>
+                  ) : (
+                    <BPPillButton
+                      size="block"
+                      variant="primary"
+                      label="Завершить урок"
+                      onClick={handleComplete}
+                      disabled={completing || !currentCardReady}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }

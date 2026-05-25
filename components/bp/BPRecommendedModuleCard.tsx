@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
@@ -16,14 +17,19 @@ interface Props {
 export function BPRecommendedModuleCard({ module, className }: Props) {
   return (
     <Link href={`/module/${module.id}`} className={clsx(s.link, className)}>
-      <BPCard className={s.card} padding={22}>
-        <span className={s.kicker}>Рекомендуемая тема</span>
-        <p className={s.title}>{module.title}</p>
-        {module.description && (
-          <p className={s.description}>{module.description}</p>
-        )}
-        <div className={s.cta}>
-          <span className={s.ctaText}>Начать тему →</span>
+      <BPCard className={s.card}>
+        <div className={s.cover}>
+          {module.imageUrl && (
+            <Image src={module.imageUrl} alt="" fill className={s.coverImage} />
+          )}
+        </div>
+        <div className={s.body}>
+          <span className={s.kicker}>Рекомендуемая тема</span>
+          <p className={s.title}>{module.title}</p>
+          {module.description && (
+            <p className={s.description}>{module.description}</p>
+          )}
+          <div className={s.cta}><span className={s.ctaText}>Начать →</span></div>
         </div>
       </BPCard>
     </Link>

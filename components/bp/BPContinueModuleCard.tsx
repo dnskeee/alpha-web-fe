@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
@@ -26,22 +27,25 @@ export function BPContinueModuleCard({ module, className }: Props) {
 
   return (
     <BPCard className={clsx(s.card, className)}>
-      <div className={s.top}>
-        <div className={s.info}>
-          <span className={s.label}>Продолжить</span>
-          <p className={s.title}>{module.title}</p>
-          <span className={s.lesson}>Урок {module.completedLessons + 1}</span>
-        </div>
+      <div className={s.cover}>
+        {module.imageUrl && (
+          <Image src={module.imageUrl} alt="" fill className={s.coverImage} />
+        )}
       </div>
-      <BPProgressBar progress={progress} className={s.bar} />
-      <div className={s.bottom}>
-        <span className={s.meta}>
-          {Math.round(progress)}% · ещё {lessonsLeft} {lessonWord(lessonsLeft)}
-        </span>
-        <BPPillButton
-          label="Продолжить →"
-          onClick={() => router.push(`/module/${module.id}`)}
-        />
+      <div className={s.body}>
+        <span className={s.label}>Продолжить</span>
+        <p className={s.title}>{module.title}</p>
+        <span className={s.lesson}>Урок {module.completedLessons + 1}</span>
+        <BPProgressBar progress={progress} className={s.bar} />
+        <div className={s.bottom}>
+          <span className={s.meta}>
+            {Math.round(progress)}% · ещё {lessonsLeft} {lessonWord(lessonsLeft)}
+          </span>
+          <BPPillButton
+            label="Продолжить →"
+            onClick={() => router.push(`/module/${module.id}`)}
+          />
+        </div>
       </div>
     </BPCard>
   );

@@ -10,6 +10,7 @@ import { BPRecommendedModuleCard } from '@/components/bp/BPRecommendedModuleCard
 import { BPStreakCard } from '@/components/bp/BPStreakCard';
 import { BPThoughtCard } from '@/components/bp/BPThoughtCard';
 import { BPTopBar } from '@/components/bp/BPTopBar';
+import { PageContainer } from '@/components/frame/PageContainer';
 import { useAuth } from '@/contexts/AuthContext';
 import { api } from '@/lib/api';
 import { readStreakCache, writeStreakCache } from '@/lib/api/streakCache';
@@ -64,7 +65,6 @@ export default function HomeScreen() {
 
   useEffect(() => {
     let cancelled = false;
-
     async function load() {
       try {
         const data = await callMaybeAuthed(() => api.courses.getList());
@@ -72,10 +72,7 @@ export default function HomeScreen() {
           const found = data.courses.find((c) => c.id === 1) ?? data.courses[0] ?? null;
           dispatch({ type: 'course_loaded', course: found });
         }
-      } catch {
-        // silently fail
-      }
-
+      } catch {}
       try {
         const cached = await readStreakCache();
         if (!cancelled && cached) {
@@ -88,13 +85,9 @@ export default function HomeScreen() {
             await writeStreakCache(fresh);
           }
         }
-      } catch {
-        // keep cached/zero state silently
-      }
-
+      } catch {}
       if (!cancelled) dispatch({ type: 'done' });
     }
-
     load();
     return () => { cancelled = true; };
   }, [callMaybeAuthed, user, withAuth]);
@@ -103,11 +96,9 @@ export default function HomeScreen() {
 
   if (loading) {
     return (
-      <div className={s.safe}>
-        <div className={s.loadingWrap}>
-          <div className={s.spinner} />
-        </div>
-      </div>
+      <PageContainer variant="tabs">
+        <div className={s.loadingWrap}><div className={s.spinner} /></div>
+      </PageContainer>
     );
   }
 
@@ -116,17 +107,19 @@ export default function HomeScreen() {
     : [];
   const shelfModules = modules.filter((m) => !m.isOwned);
   const hasProgress = !!course && course.completedLessons > 0;
-  const activeModule = hasProgress ? pickActiveModule(modules) : null;
+  const active = hasProgress ? pickActiveModule(modules) : null;
   const isRegistered = !!user && !user.isGuest;
 
   return (
-    <div className={s.safe}>
+    <PageContainer variant="tabs">
       <div className={s.scroll}>
-        <BPTopBar
-          showLogo
-          streak={user ? streakDays : undefined}
-          onStreakPress={() => router.push('/streak')}
-        />
+        <div className={s.mobileTopBar}>
+          <BPTopBar
+            showLogo
+            streak={user ? streakDays : undefined}
+            onStreakPress={() => router.push('/streak')}
+          />
+        </div>
 
         {isRegistered && (
           <div className={s.greetingBlock}>
@@ -135,20 +128,23 @@ export default function HomeScreen() {
           </div>
         )}
 
-        {activeModule
-          ? <BPContinueModuleCard module={activeModule} />
+        {active
+          ? <BPContinueModuleCard module={active} />
           : modules[0] && <BPRecommendedModuleCard module={modules[0]} />}
 
-        <BPThoughtCard />
-
         {user && (
-          <BPStreakCard streakDays={streakDays} currentWeek={currentWeek} />
+          <div className={s.streakThoughtRow}>
+            <BPStreakCard streakDays={streakDays} currentWeek={currentWeek} />
+            <BPThoughtCard />
+          </div>
         )}
+
+        {!user && <BPThoughtCard />}
 
         <BPModulesShelf modules={shelfModules} />
 
         <BPBundlesCTA className={s.bundlesCta} />
       </div>
-    </div>
+    </PageContainer>
   );
 }

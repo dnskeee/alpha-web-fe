@@ -3,8 +3,10 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BPPageHeader } from '@/components/bp/BPPageHeader';
+import { BPAppBar } from '@/components/bp/BPAppBar';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
+import { AccountShell } from '@/components/frame/AccountShell';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import { SpeakerSpriteAvatar } from '@/components/bp/SpeakerSpriteAvatar';
 import { CheckIcon } from '@/components/icons/CheckIcon';
 import { SPEAKERS } from '@/constants/speakers';
@@ -16,35 +18,39 @@ export default function SelectSpeakerPage() {
   const { speakerId, setSpeaker } = useSpeaker();
 
   return (
-    <div className={s.safe}>
-      <BPPageHeader onBack={() => router.back()} />
+    <>
+      <BPAppBar />
+      <AccountShell>
+        <div className={s.safe}>
+          <MobileOnlyHeader />
+          <div className={s.scroll}>
+            <div className={s.titleBlock}>
+              <h1 className={s.title}>Персонаж</h1>
+            </div>
 
-      <div className={s.scroll}>
-        <div className={s.titleBlock}>
-          <h1 className={s.title}>Персонаж</h1>
+            {SPEAKERS.map((speaker) => {
+              const selected = speaker.id === speakerId;
+              return (
+                <button
+                  key={speaker.id}
+                  type="button"
+                  className={s.speakerBtn}
+                  onClick={() => {
+                    setSpeaker(speaker.id);
+                    router.back();
+                  }}
+                >
+                  <BPSoftCard className={s.speakerCard}>
+                    <SpeakerSpriteAvatar asset={speaker.asset} size={44} />
+                    <span className={s.speakerName}>{speaker.name}</span>
+                    {selected && <CheckIcon size={20} color="var(--color-accent)" />}
+                  </BPSoftCard>
+                </button>
+              );
+            })}
+          </div>
         </div>
-
-        {SPEAKERS.map((speaker) => {
-          const selected = speaker.id === speakerId;
-          return (
-            <button
-              key={speaker.id}
-              type="button"
-              className={s.speakerBtn}
-              onClick={() => {
-                setSpeaker(speaker.id);
-                router.back();
-              }}
-            >
-              <BPSoftCard className={s.speakerCard}>
-                <SpeakerSpriteAvatar asset={speaker.asset} size={44} />
-                <span className={s.speakerName}>{speaker.name}</span>
-                {selected && <CheckIcon size={20} color="var(--color-accent)" />}
-              </BPSoftCard>
-            </button>
-          );
-        })}
-      </div>
-    </div>
+      </AccountShell>
+    </>
   );
 }

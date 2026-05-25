@@ -2,10 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BPPageHeader } from '@/components/bp/BPPageHeader';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
 import { BPPillButton } from '@/components/bp/BPPillButton';
 import { useAuth } from '@/contexts/AuthContext';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import s from './page.module.css';
 
 export default function VerifyEmailPage() {
@@ -84,7 +84,7 @@ export default function VerifyEmailPage() {
 
   return (
     <main className={s.screen}>
-      <BPPageHeader onBack={() => router.back()} />
+      <MobileOnlyHeader />
       <div className={s.scroll}>
         <h1 className={s.title}>Подтвердите email</h1>
         <p className={s.subtitle}>{subtitle}</p>

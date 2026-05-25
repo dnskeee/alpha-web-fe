@@ -126,6 +126,15 @@
   transform: translateX(20px);
 }
 
+@media (min-width: 1024px) {
+  .titleBlock {
+    display: none;
+  }
+  .scroll {
+    padding: 0;
+  }
+}
+
 /* Guest card */
 .guestCard {
   margin-bottom: 14px;

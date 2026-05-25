@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { BPAppBar } from '@/components/bp/BPAppBar';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
-import { BPTopBar } from '@/components/bp/BPTopBar';
+import { AccountShell } from '@/components/frame/AccountShell';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import { CheckIcon } from '@/components/icons/CheckIcon';
 import { ClockIcon } from '@/components/icons/ClockIcon';
 import { TIMEZONES } from '@/constants/timezones';
@@ -34,33 +36,41 @@ export default function SelectTimezonePage() {
   }
 
   return (
-    <div className={s.safe}>
-      <BPTopBar onBack={() => router.back()} title="Часовой пояс" />
+    <>
+      <BPAppBar />
+      <AccountShell>
+        <div className={s.safe}>
+          <MobileOnlyHeader />
+          <div className={s.titleBlock}>
+            <h1 className={s.title}>Часовой пояс</h1>
+          </div>
 
-      <div className={s.scroll}>
-        {TIMEZONES.map((tz) => {
-          const isSelected = tz.offset === selected;
-          return (
-            <button
-              key={tz.offset}
-              type="button"
-              className={s.tzBtn}
-              onClick={() => handleSelect(tz.offset)}
-            >
-              <BPSoftCard className={s.tzCard}>
-                <div className={s.tzIconWrap}>
-                  <ClockIcon size={22} color="var(--color-accent)" />
-                </div>
-                <div className={s.tzText}>
-                  <span className={s.tzLabel}>{tz.label}</span>
-                  <span className={s.tzDisplay}>{tz.display}</span>
-                </div>
-                {isSelected && <CheckIcon size={20} color="var(--color-accent)" />}
-              </BPSoftCard>
-            </button>
-          );
-        })}
-      </div>
-    </div>
+          <div className={s.scroll}>
+            {TIMEZONES.map((tz) => {
+              const isSelected = tz.offset === selected;
+              return (
+                <button
+                  key={tz.offset}
+                  type="button"
+                  className={s.tzBtn}
+                  onClick={() => handleSelect(tz.offset)}
+                >
+                  <BPSoftCard className={s.tzCard}>
+                    <div className={s.tzIconWrap}>
+                      <ClockIcon size={22} color="var(--color-accent)" />
+                    </div>
+                    <div className={s.tzText}>
+                      <span className={s.tzLabel}>{tz.label}</span>
+                      <span className={s.tzDisplay}>{tz.display}</span>
+                    </div>
+                    {isSelected && <CheckIcon size={20} color="var(--color-accent)" />}
+                  </BPSoftCard>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </AccountShell>
+    </>
   );
 }

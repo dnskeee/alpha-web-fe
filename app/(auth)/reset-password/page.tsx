@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { BPPageHeader } from '@/components/bp/BPPageHeader';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
 import { BPPillButton } from '@/components/bp/BPPillButton';
 import { EyeIcon } from '@/components/icons/EyeIcon';
 import { EyeOffIcon } from '@/components/icons/EyeOffIcon';
 import { useAuth } from '@/contexts/AuthContext';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import s from './page.module.css';
 
 interface FieldProps {
@@ -135,7 +135,7 @@ export default function ResetPasswordPage() {
 
   return (
     <main className={s.screen}>
-      <BPPageHeader onBack={() => router.back()} />
+      <MobileOnlyHeader />
       <div className={s.scroll}>
         <h1 className={s.title}>Новый пароль</h1>
         <p className={s.subtitle}>Введите код из письма и придумайте новый пароль.</p>

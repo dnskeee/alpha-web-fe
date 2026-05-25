@@ -3,8 +3,10 @@
 import React, { useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { BPAppBar } from '@/components/bp/BPAppBar';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
 import { BPTopBar } from '@/components/bp/BPTopBar';
+import { PageContainer } from '@/components/frame/PageContainer';
 import { ForwardIcon } from '@/components/icons/ForwardIcon';
 import { ApiModule } from '@/types/api';
 import { lessonWord, themeWord } from '@/lib/utils/plural';
@@ -38,40 +40,45 @@ export default function CourseScreen() {
   const moduleWord = themeWord(sorted.length);
 
   return (
-    <div className={s.safe}>
-      <BPTopBar onBack={() => router.back()} />
+    <>
+      <BPAppBar />
+      <PageContainer variant="detail">
+        <div className={s.safe}>
+          <BPTopBar onBack={() => router.back()} />
 
-      <div className={s.scroll}>
-        <h1 className={s.title}>{title}</h1>
-        <p className={s.subtitle}>
-          {sorted.length} {moduleWord}
-        </p>
+          <div className={s.scroll}>
+            <h1 className={s.title}>{title}</h1>
+            <p className={s.subtitle}>
+              {sorted.length} {moduleWord}
+            </p>
 
-        <div className={s.list}>
-          {sorted.map((mod, i) => {
-            const color = COURSE_COLORS[i % COURSE_COLORS.length];
-            return (
-              <button
-                key={mod.id}
-                type="button"
-                className={s.moduleBtn}
-                onClick={() => router.push(`/module/${mod.id}`)}
-              >
-                <BPSoftCard className={s.moduleCard}>
-                  <div className={s.colorDot} style={{ backgroundColor: color }} />
-                  <div className={s.moduleInfo}>
-                    <span className={s.moduleTitle}>{mod.title}</span>
-                    <span className={s.moduleMeta}>
-                      {mod.totalLessons} {lessonWord(mod.totalLessons)}
-                    </span>
-                  </div>
-                  <ForwardIcon size={16} color="var(--color-muted)" />
-                </BPSoftCard>
-              </button>
-            );
-          })}
+            <div className={s.list}>
+              {sorted.map((mod, i) => {
+                const color = COURSE_COLORS[i % COURSE_COLORS.length];
+                return (
+                  <button
+                    key={mod.id}
+                    type="button"
+                    className={s.moduleBtn}
+                    onClick={() => router.push(`/module/${mod.id}`)}
+                  >
+                    <BPSoftCard className={s.moduleCard}>
+                      <div className={s.colorDot} style={{ backgroundColor: color }} />
+                      <div className={s.moduleInfo}>
+                        <span className={s.moduleTitle}>{mod.title}</span>
+                        <span className={s.moduleMeta}>
+                          {mod.totalLessons} {lessonWord(mod.totalLessons)}
+                        </span>
+                      </div>
+                      <ForwardIcon size={16} color="var(--color-muted)" />
+                    </BPSoftCard>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </PageContainer>
+    </>
   );
 }

@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: 32px;
+    padding-left: clamp(16px, 4vw, 32px);
+    padding-right: clamp(16px, 4vw, 32px);
+  }
+  .tabs   { max-width: var(--w-tabs); }
+  .detail { max-width: var(--w-detail); }
+  .reader { max-width: var(--w-reader); }
+  .auth   { max-width: var(--w-auth); }
+}

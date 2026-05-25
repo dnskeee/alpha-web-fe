@@ -5,6 +5,18 @@
   flex-direction: column;
 }
 
+.titleBlock {
+  padding: 4px 6px 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -0.6px;
+}
+
 .scroll {
   flex: 1;
   overflow-y: auto;
@@ -27,6 +39,7 @@
   flex-direction: row;
   align-items: center;
   gap: 12px;
+  background-color: var(--color-bg-card);
 }
 
 .tzIconWrap {

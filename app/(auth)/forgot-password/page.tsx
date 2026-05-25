@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BPPageHeader } from '@/components/bp/BPPageHeader';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
 import { BPPillButton } from '@/components/bp/BPPillButton';
 import { useAuth } from '@/contexts/AuthContext';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import s from './page.module.css';
 
 interface FieldProps {
@@ -89,7 +89,7 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <main className={s.screen}>
-        <BPPageHeader onBack={() => router.back()} />
+        <MobileOnlyHeader />
         <div className={s.scroll}>
           <h1 className={s.title}>Проверьте почту</h1>
           <p className={s.subtitle}>Если этот email зарегистрирован, вы получите код для сброса пароля.</p>
@@ -110,10 +110,10 @@ export default function ForgotPasswordPage() {
 
   return (
     <main className={s.screen}>
-      <BPPageHeader onBack={() => router.back()} />
+      <MobileOnlyHeader />
       <div className={s.scroll}>
         <h1 className={s.title}>Забыли пароль?</h1>
-        <p className={s.subtitle}>Мы отправим ссылку на email.</p>
+        <p className={s.subtitle}>Мы отправим код для сброса пароля на ваш email.</p>
 
         <form className={s.form} onSubmit={onSubmit} noValidate>
           <Field
@@ -128,11 +128,17 @@ export default function ForgotPasswordPage() {
           />
 
           <BPPillButton
-            label={busy ? 'Отправляем…' : 'Отправить ссылку →'}
+            label={busy ? 'Отправляем…' : 'Отправить код →'}
             size="block"
             disabled={busy || !email.trim()}
             onClick={handleSubmit}
           />
+
+          <div className={s.switchRow}>
+            <button type="button" className={s.backLink} onClick={() => router.replace('/login')}>
+              ← Вернуться к входу
+            </button>
+          </div>
         </form>
       </div>
     </main>

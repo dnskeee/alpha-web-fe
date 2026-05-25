@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { BPCard } from '@/components/bp/BPCard';
 import { SettingsIcon } from '@/components/icons/SettingsIcon';
 import { ForwardIcon } from '@/components/icons/ForwardIcon';
+import { AccountShell } from '@/components/frame/AccountShell';
 import { useAuth } from '@/contexts/AuthContext';
 import s from './page.module.css';
 
@@ -14,8 +15,9 @@ export default function ProfileScreen() {
   const router = useRouter();
 
   return (
-    <div className={s.safe}>
-      <div className={s.container}>
+    <AccountShell>
+      <div className={s.safe}>
+        <div className={s.container}>
         <p className={s.screenLabel}>Профиль</p>
 
         {(!user || user.isGuest) ? (
@@ -75,7 +77,8 @@ export default function ProfileScreen() {
             Выйти из аккаунта
           </button>
         )}
+        </div>
       </div>
-    </div>
+    </AccountShell>
   );
 }

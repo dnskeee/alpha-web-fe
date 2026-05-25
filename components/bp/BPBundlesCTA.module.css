@@ -57,3 +57,29 @@
   font-size: 12px;
   color: var(--color-btn-fg);
 }
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 22px 26px;
+    gap: 18px;
+    border-radius: 22px;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+
+  .label {
+    font-size: 17px;
+  }
+
+  .pill {
+    padding: 10px 18px;
+  }
+
+  .pillText {
+    font-size: 13px;
+  }
+}

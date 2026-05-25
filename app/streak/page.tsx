@@ -3,10 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { BPAppBar } from '@/components/bp/BPAppBar';
 import { BPCard } from '@/components/bp/BPCard';
 import { BPSectionTitle } from '@/components/bp/BPSectionTitle';
 import { BPSoftCard } from '@/components/bp/BPSoftCard';
 import { BPPageHeader } from '@/components/bp/BPPageHeader';
+import { PageContainer } from '@/components/frame/PageContainer';
 import { CheckIcon } from '@/components/icons/CheckIcon';
 import { ZapIcon } from '@/components/icons/ZapIcon';
 import { useAuth } from '@/contexts/AuthContext';
@@ -102,62 +104,67 @@ export default function StreakPage() {
   }, []);
 
   return (
-    <div className={s.safe}>
-      <BPPageHeader onBack={() => router.back()} />
+    <>
+      <BPAppBar />
+      <PageContainer variant="detail">
+        <div className={s.safe}>
+          <BPPageHeader onBack={() => router.back()} />
 
-      <div className={s.scroll}>
-        <div className={s.titleBlock}>
-          <h1 className={s.title}>Серия</h1>
+          <div className={s.scroll}>
+            <div className={s.titleBlock}>
+              <h1 className={s.title}>Серия</h1>
+            </div>
+
+            <BPCard className={s.heroCard}>
+              <div className={s.heroInner}>
+                <ZapIcon size={56} color="var(--color-zap)" />
+                <span className={s.heroNumber}>{streakDays}</span>
+                <span className={s.heroUnit}>дней подряд</span>
+                <p className={s.heroHabit}>{getHabitText(streakDays)}</p>
+              </div>
+            </BPCard>
+
+            <BPCard className={s.weekCard}>
+              <span className={s.weekLabel}>Эта неделя</span>
+              <div className={s.weekStrip}>
+                {currentWeek.map((d, i) => (
+                  <div key={d.date ?? i} className={s.weekCol}>
+                    <div
+                      className={s.weekBar}
+                      data-active={d.hasActivity ? 'true' : 'false'}
+                    />
+                    <span className={s.weekDay}>{WEEK_LABELS[i]}</span>
+                  </div>
+                ))}
+              </div>
+            </BPCard>
+
+            <BPSectionTitle title="Цели" className={s.sectionTitle} />
+
+            {MILESTONES.map((m) => {
+              const reached = streakDays >= m.days;
+              return (
+                <BPSoftCard key={m.days} className={s.milestone}>
+                  <div
+                    className={s.milestoneIcon}
+                    data-reached={reached ? 'true' : 'false'}
+                  >
+                    {reached ? (
+                      <CheckIcon size={16} color="var(--color-accent-ink)" />
+                    ) : (
+                      <span className={s.milestoneDays}>{m.days}</span>
+                    )}
+                  </div>
+                  <div className={s.milestoneText}>
+                    <span className={s.milestoneLabel}>{m.label}</span>
+                    <span className={s.milestoneHint}>{m.hint}</span>
+                  </div>
+                </BPSoftCard>
+              );
+            })}
+          </div>
         </div>
-
-        <BPCard className={s.heroCard}>
-          <div className={s.heroInner}>
-            <ZapIcon size={56} color="var(--color-zap)" />
-            <span className={s.heroNumber}>{streakDays}</span>
-            <span className={s.heroUnit}>дней подряд</span>
-            <p className={s.heroHabit}>{getHabitText(streakDays)}</p>
-          </div>
-        </BPCard>
-
-        <BPCard className={s.weekCard}>
-          <span className={s.weekLabel}>Эта неделя</span>
-          <div className={s.weekStrip}>
-            {currentWeek.map((d, i) => (
-              <div key={d.date ?? i} className={s.weekCol}>
-                <div
-                  className={s.weekBar}
-                  data-active={d.hasActivity ? 'true' : 'false'}
-                />
-                <span className={s.weekDay}>{WEEK_LABELS[i]}</span>
-              </div>
-            ))}
-          </div>
-        </BPCard>
-
-        <BPSectionTitle title="Цели" className={s.sectionTitle} />
-
-        {MILESTONES.map((m) => {
-          const reached = streakDays >= m.days;
-          return (
-            <BPSoftCard key={m.days} className={s.milestone}>
-              <div
-                className={s.milestoneIcon}
-                data-reached={reached ? 'true' : 'false'}
-              >
-                {reached ? (
-                  <CheckIcon size={16} color="var(--color-accent-ink)" />
-                ) : (
-                  <span className={s.milestoneDays}>{m.days}</span>
-                )}
-              </div>
-              <div className={s.milestoneText}>
-                <span className={s.milestoneLabel}>{m.label}</span>
-                <span className={s.milestoneHint}>{m.hint}</span>
-              </div>
-            </BPSoftCard>
-          );
-        })}
-      </div>
-    </div>
+      </PageContainer>
+    </>
   );
 }

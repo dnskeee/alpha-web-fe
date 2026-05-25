@@ -17,9 +17,6 @@ const COURSE_COLORS = [
   'var(--color-icon-e)',
 ];
 
-const CARD_WIDTH = 208;
-const COVER_HEIGHT = 96;
-
 interface Props {
   modules: ApiModule[];
   title?: string;
@@ -39,18 +36,10 @@ export function BPModulesShelf({ modules, title = 'Темы' }: Props) {
           const fallbackColor = COURSE_COLORS[i % COURSE_COLORS.length] ?? 'var(--color-icon-a)';
           return (
             <Link key={mod.id} href={`/module/${mod.id}`} className={s.cardLink}>
-              <BPCard padding={0} radius={20} flat className={s.card} style={{ width: CARD_WIDTH }}>
-                <div
-                  className={s.cover}
-                  style={{ height: COVER_HEIGHT, backgroundColor: fallbackColor }}
-                >
+              <BPCard padding={0} radius={20} flat className={s.card}>
+                <div className={s.cover} style={{ backgroundColor: fallbackColor }}>
                   {mod.imageUrl && (
-                    <Image
-                      src={mod.imageUrl}
-                      alt={mod.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
+                    <Image src={mod.imageUrl} alt={mod.title} fill style={{ objectFit: 'cover' }} />
                   )}
                 </div>
                 <div className={s.info}>

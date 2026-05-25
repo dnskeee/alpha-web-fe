@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BPPageHeader } from '@/components/bp/BPPageHeader';
+import { BPAppBar } from '@/components/bp/BPAppBar';
 import { BPCard } from '@/components/bp/BPCard';
+import { AccountShell } from '@/components/frame/AccountShell';
+import { MobileOnlyHeader } from '@/components/frame/MobileOnlyHeader';
 import { BPSectionTitle } from '@/components/bp/BPSectionTitle';
 import { ForwardIcon } from '@/components/icons/ForwardIcon';
 import { ClockIcon } from '@/components/icons/ClockIcon';
@@ -87,76 +89,81 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className={s.safe}>
-      <BPPageHeader onBack={() => router.back()} />
-      <div className={s.scroll}>
-        <div className={s.titleBlock}>
-          <h1 className={s.title}>Настройки</h1>
+    <>
+      <BPAppBar />
+      <AccountShell>
+        <div className={s.safe}>
+          <MobileOnlyHeader />
+          <div className={s.scroll}>
+            <div className={s.titleBlock}>
+              <h1 className={s.title}>Настройки</h1>
+            </div>
+
+            <BPSectionTitle title="Внешний вид" className={s.sectionTitle} />
+            <Group>
+              <Row
+                icon={<SunIcon size={18} color="var(--color-ink)" />}
+                label={isDark ? 'Тёмная тема' : 'Светлая тема'}
+                right={
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={isDark}
+                    onClick={() => setPref(isDark ? 'light' : 'dark')}
+                    className={s.toggle}
+                    data-on={isDark ? 'true' : 'false'}
+                  >
+                    <span className={s.toggleThumb} />
+                  </button>
+                }
+              />
+            </Group>
+
+            <BPSectionTitle title="Аккаунт" className={s.sectionTitle} />
+
+            {!user || user.isGuest ? (
+              <BPCard padding={16} radius={18} className={s.guestCard}>
+                <p className={s.guestText}>
+                  Вы в гостевом режиме. Создайте аккаунт, чтобы сохранить прогресс.
+                </p>
+                <button
+                  type="button"
+                  className={s.guestPrimary}
+                  onClick={() => router.push('/register')}
+                >
+                  Создать аккаунт
+                </button>
+                <button
+                  type="button"
+                  className={s.guestSecondary}
+                  onClick={() => router.push('/login')}
+                >
+                  Войти
+                </button>
+              </BPCard>
+            ) : (
+              <Group>
+                <Row label="Выйти" right={null} labelClassName={s.rowLabelDanger} onClick={handleLogout} />
+              </Group>
+            )}
+
+            <Group>
+              <Row
+                icon={<ClockIcon size={18} color="var(--color-ink)" />}
+                label="Часовой пояс"
+                hint={`UTC ${currentOffset}`}
+                onClick={() => router.push('/select-timezone')}
+              />
+              <Row
+                icon={<ProfileIcon size={18} color="var(--color-ink)" />}
+                label="Персонаж"
+                hint={activeSpeakerName}
+                onClick={() => router.push('/select-speaker')}
+              />
+            </Group>
+          </div>
         </div>
-
-        <BPSectionTitle title="Внешний вид" className={s.sectionTitle} />
-        <Group>
-          <Row
-            icon={<SunIcon size={18} color="var(--color-ink)" />}
-            label={isDark ? 'Тёмная тема' : 'Светлая тема'}
-            right={
-              <button
-                type="button"
-                role="switch"
-                aria-checked={isDark}
-                onClick={() => setPref(isDark ? 'light' : 'dark')}
-                className={s.toggle}
-                data-on={isDark ? 'true' : 'false'}
-              >
-                <span className={s.toggleThumb} />
-              </button>
-            }
-          />
-        </Group>
-
-        <BPSectionTitle title="Аккаунт" className={s.sectionTitle} />
-
-        {!user || user.isGuest ? (
-          <BPCard padding={16} radius={18} className={s.guestCard}>
-            <p className={s.guestText}>
-              Вы в гостевом режиме. Создайте аккаунт, чтобы сохранить прогресс.
-            </p>
-            <button
-              type="button"
-              className={s.guestPrimary}
-              onClick={() => router.push('/register')}
-            >
-              Создать аккаунт
-            </button>
-            <button
-              type="button"
-              className={s.guestSecondary}
-              onClick={() => router.push('/login')}
-            >
-              Войти
-            </button>
-          </BPCard>
-        ) : (
-          <Group>
-            <Row label="Выйти" right={null} labelClassName={s.rowLabelDanger} onClick={handleLogout} />
-          </Group>
-        )}
-
-        <Group>
-          <Row
-            icon={<ClockIcon size={18} color="var(--color-ink)" />}
-            label="Часовой пояс"
-            hint={`UTC ${currentOffset}`}
-            onClick={() => router.push('/select-timezone')}
-          />
-          <Row
-            icon={<ProfileIcon size={18} color="var(--color-ink)" />}
-            label="Персонаж"
-            hint={activeSpeakerName}
-            onClick={() => router.push('/select-speaker')}
-          />
-        </Group>
-      </div>
-    </div>
+      </AccountShell>
+    </>
   );
 }

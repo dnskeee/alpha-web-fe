@@ -20,6 +20,8 @@ import { useBuy } from '@/lib/hooks/useBuy';
 import { ApiModuleDetail } from '@/types/api';
 import { lessonWord } from '@/lib/utils/plural';
 
+import { BPAppBar } from '@/components/bp/BPAppBar';
+import { PageContainer } from '@/components/frame/PageContainer';
 import { BuyModuleCard } from './_components/BuyModuleCard';
 import { LessonsTab } from './_components/LessonsTab';
 import s from './page.module.css';
@@ -112,24 +114,34 @@ export default function ModuleScreen() {
 
   if (loading) {
     return (
-      <div className={s.safe}>
-        <BPPageHeader onBack={() => router.back()} />
-        <div className={s.center}>
-          <div className={s.spinner} />
-        </div>
-      </div>
+      <>
+        <BPAppBar />
+        <PageContainer variant="detail">
+          <div className={s.safe}>
+            <BPPageHeader onBack={() => router.back()} />
+            <div className={s.center}>
+              <div className={s.spinner} />
+            </div>
+          </div>
+        </PageContainer>
+      </>
     );
   }
 
   if (error || !module) {
     return (
-      <div className={s.safe}>
-        <BPPageHeader onBack={() => router.back()} />
-        <div className={s.center}>
-          <p className={s.errorText}>{error || 'Тема не найдена'}</p>
-          <BPPillButton label="Повторить" onClick={loadModule} variant="accent" />
-        </div>
-      </div>
+      <>
+        <BPAppBar />
+        <PageContainer variant="detail">
+          <div className={s.safe}>
+            <BPPageHeader onBack={() => router.back()} />
+            <div className={s.center}>
+              <p className={s.errorText}>{error || 'Тема не найдена'}</p>
+              <BPPillButton label="Повторить" onClick={loadModule} variant="accent" />
+            </div>
+          </div>
+        </PageContainer>
+      </>
     );
   }
 
@@ -145,50 +157,55 @@ export default function ModuleScreen() {
   );
 
   return (
-    <div className={s.safe}>
-      <BPPageHeader onBack={() => router.back()} />
+    <>
+      <BPAppBar />
+      <PageContainer variant="detail">
+        <div className={s.safe}>
+          <BPPageHeader onBack={() => router.back()} />
 
-      <div className={s.titleBlock}>
-        <h1 className={s.title}>{module.title}</h1>
-      </div>
+          <div className={s.titleBlock}>
+            <h1 className={s.title}>{module.title}</h1>
+          </div>
 
-      <div className={s.tabWrap}>
-        <div className={s.tabBar}>
-          {(['about', 'lessons'] as const).map(t => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => setTab(t)}
-              className={`${s.tabPill} ${tab === t ? s.tabPillActive : ''}`}
-            >
-              {t === 'about' ? 'О теме' : 'Уроки'}
-            </button>
-          ))}
+          <div className={s.tabWrap}>
+            <div className={s.tabBar}>
+              {(['about', 'lessons'] as const).map(t => (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => setTab(t)}
+                  className={`${s.tabPill} ${tab === t ? s.tabPillActive : ''}`}
+                >
+                  {t === 'about' ? 'О теме' : 'Уроки'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={s.scroll}>
+            {tab === 'about' ? (
+              <AboutTab
+                module={module}
+                sorted={sorted}
+                onBuy={() => buy('module', module.id, loadModule)}
+                buyBusy={busy}
+                setTab={setTab}
+                mustRegister={!user || user.isGuest}
+                buyCardRef={buyCardRef}
+              />
+            ) : (
+              <LessonsTab
+                module={module}
+                sorted={sorted}
+                lastDoneIdx={lastDoneIdx}
+                pct={pct}
+                onRequestBuy={goToBuy}
+              />
+            )}
+          </div>
         </div>
-      </div>
-
-      <div className={s.scroll}>
-        {tab === 'about' ? (
-          <AboutTab
-            module={module}
-            sorted={sorted}
-            onBuy={() => buy('module', module.id, loadModule)}
-            buyBusy={busy}
-            setTab={setTab}
-            mustRegister={!user || user.isGuest}
-            buyCardRef={buyCardRef}
-          />
-        ) : (
-          <LessonsTab
-            module={module}
-            sorted={sorted}
-            lastDoneIdx={lastDoneIdx}
-            pct={pct}
-            onRequestBuy={goToBuy}
-          />
-        )}
-      </div>
-    </div>
+      </PageContainer>
+    </>
   );
 }
 

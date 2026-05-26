@@ -44,10 +44,12 @@ export default function RoadmapPage() {
   return (
     <>
       <BPAppBar />
-      <PageContainer variant="detail">
+      <PageContainer variant="tabs">
         <div className={s.safe}>
           <div className={s.scroll}>
-            <BPPageHeader onBack={() => router.back()} />
+            <div className={s.pageHeader}>
+              <BPPageHeader onBack={() => router.back()} />
+            </div>
 
             <div className={s.header}>
               <BPSectionTitle title="Пакеты курсов" />

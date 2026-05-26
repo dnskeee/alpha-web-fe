@@ -24,6 +24,7 @@ import { BPAppBar } from '@/components/bp/BPAppBar';
 import { PageContainer } from '@/components/frame/PageContainer';
 import { BuyModuleCard } from './_components/BuyModuleCard';
 import { LessonsTab } from './_components/LessonsTab';
+import { ModuleShell } from './_components/ModuleShell';
 import s from './page.module.css';
 
 type Tab = 'about' | 'lessons';
@@ -118,7 +119,9 @@ export default function ModuleScreen() {
         <BPAppBar />
         <PageContainer variant="detail">
           <div className={s.safe}>
-            <BPPageHeader onBack={() => router.back()} />
+            <div className={s.pageHeader}>
+              <BPPageHeader onBack={() => router.back()} />
+            </div>
             <div className={s.center}>
               <div className={s.spinner} />
             </div>
@@ -134,7 +137,9 @@ export default function ModuleScreen() {
         <BPAppBar />
         <PageContainer variant="detail">
           <div className={s.safe}>
-            <BPPageHeader onBack={() => router.back()} />
+            <div className={s.pageHeader}>
+              <BPPageHeader onBack={() => router.back()} />
+            </div>
             <div className={s.center}>
               <p className={s.errorText}>{error || 'Тема не найдена'}</p>
               <BPPillButton label="Повторить" onClick={loadModule} variant="accent" />
@@ -159,9 +164,11 @@ export default function ModuleScreen() {
   return (
     <>
       <BPAppBar />
-      <PageContainer variant="detail">
+      <ModuleShell tab={tab} onTabChange={setTab}>
         <div className={s.safe}>
-          <BPPageHeader onBack={() => router.back()} />
+          <div className={s.pageHeader}>
+            <BPPageHeader onBack={() => router.back()} />
+          </div>
 
           <div className={s.titleBlock}>
             <h1 className={s.title}>{module.title}</h1>
@@ -204,7 +211,7 @@ export default function ModuleScreen() {
             )}
           </div>
         </div>
-      </PageContainer>
+      </ModuleShell>
     </>
   );
 }
@@ -242,47 +249,51 @@ function AboutTab({
         </div>
       )}
 
-      {module.keyStatements && module.keyStatements.length > 0 && (
-        <div className={s.statementsBlock}>
-          {module.keyStatements.map(stmt => (
-            <div key={stmt} className={s.statementRow}>
-              <div className={s.crossBadge}>
-                <CrossIcon size={12} color="#ffffff" />
-              </div>
-              <p className={s.statementText}>{stmt}</p>
+      {(((module.keyStatements?.length ?? 0) > 0) || module.outcomes.length > 0) && (
+        <div className={s.statementsOutcomes}>
+          {module.keyStatements && module.keyStatements.length > 0 && (
+            <div className={s.statementsBlock}>
+              {module.keyStatements.map(stmt => (
+                <div key={stmt} className={s.statementRow}>
+                  <div className={s.crossBadge}>
+                    <CrossIcon size={12} color="#ffffff" />
+                  </div>
+                  <p className={s.statementText}>{stmt}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
+          )}
 
-      {module.outcomes.length > 0 && (
-        <>
-          <h2 className={s.sectionTitle}>Что ты узнаешь</h2>
-          <div className={s.outcomesBlock}>
-            {module.outcomes.map((o, i) => (
-              <div
-                key={`${o.title}-${i}`}
-                className={s.outcomeRow}
-                style={{
-                  borderBottom:
-                    i < module.outcomes.length - 1
-                      ? '1px solid var(--color-line)'
-                      : 'none',
-                }}
-              >
-                <div className={s.checkBadge}>
-                  <CheckIcon size={13} color="var(--color-accent)" />
-                </div>
-                <div className={s.outcomeTexts}>
-                  <span className={s.outcomeTitle}>{o.title}</span>
-                  {o.subtitle ? (
-                    <span className={s.outcomeSub}>{o.subtitle}</span>
-                  ) : null}
-                </div>
+          {module.outcomes.length > 0 && (
+            <div className={s.outcomesGroup}>
+              <h2 className={s.sectionTitle}>Что ты узнаешь</h2>
+              <div className={s.outcomesBlock}>
+                {module.outcomes.map((o, i) => (
+                  <div
+                    key={`${o.title}-${i}`}
+                    className={s.outcomeRow}
+                    style={{
+                      borderBottom:
+                        i < module.outcomes.length - 1
+                          ? '1px solid var(--color-line)'
+                          : 'none',
+                    }}
+                  >
+                    <div className={s.checkBadge}>
+                      <CheckIcon size={13} color="var(--color-accent)" />
+                    </div>
+                    <div className={s.outcomeTexts}>
+                      <span className={s.outcomeTitle}>{o.title}</span>
+                      {o.subtitle ? (
+                        <span className={s.outcomeSub}>{o.subtitle}</span>
+                      ) : null}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </>
+            </div>
+          )}
+        </div>
       )}
 
       {module.descriptionExtended ? (

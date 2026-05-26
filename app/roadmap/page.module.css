@@ -40,6 +40,9 @@
 .bundleCard {
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .accentRail {
@@ -103,6 +106,7 @@
 .bundleFooter {
   padding: 18px;
   border-top: 1px solid var(--color-line);
+  margin-top: auto;
 }
 
 .priceLine {
@@ -149,4 +153,22 @@
   font-weight: 500;
   color: var(--color-muted);
   text-align: center;
+}
+
+.pageHeader {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .scroll { padding-bottom: 40px; }
+  .header { padding-left: 0; padding-right: 0; }
+  .list { padding: 0; }
+}
+
+@media (min-width: 1024px) {
+  .pageHeader { display: none; }
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

@@ -11,6 +11,7 @@ import s from './BPAppBar.module.css';
 const MAIN_NAV = [
   { href: '/', label: 'Главная', match: (p: string) => p === '/' },
   { href: '/modules', label: 'Темы', match: (p: string) => p.startsWith('/modules') },
+  { href: '/roadmap', label: 'Пакеты курсов', match: (p: string) => p.startsWith('/roadmap') },
 ] as const;
 
 const PROFILE_HREF = '/profile';

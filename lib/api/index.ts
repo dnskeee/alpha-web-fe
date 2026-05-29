@@ -1,5 +1,5 @@
 import {
-  ApiLessonDetail, ApiModuleDetail, ApiProgress, ActivityResponse, CoursesListResponse,
+  ApiLessonDetail, ApiLessonListResponse, ApiModuleDetail, ApiProgress, ActivityResponse, CoursesListResponse,
   StreakResponse, BundleListItem, PaymentInitiation, PaymentPreview, PaymentStatusInfo,
 } from '@/types/api';
 
@@ -72,6 +72,7 @@ export const api = {
   },
   lessons: {
     getInfo: (id: number) => post<ApiLessonDetail>('/api/lessons/get-info', { id }),
+    getList: (lessonId: number) => post<ApiLessonListResponse>('/api/lessons/get-list', { id: lessonId }),
   },
   progress: {
     upsert: (lessonId: number, status: 'Active' | 'Done', body: unknown) =>

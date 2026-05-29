@@ -7,15 +7,9 @@
     padding-top: 32px;
     padding-left: clamp(16px, 4vw, 32px);
     padding-right: clamp(16px, 4vw, 32px);
-    max-width: var(--w-detail);
+    max-width: var(--w-tabs);
     margin-left: auto;
     margin-right: auto;
-  }
-}
-
-@media (min-width: 1024px) {
-  .wrap {
-    max-width: var(--w-tabs);
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 32px;
@@ -26,7 +20,7 @@
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .sidebar {
     display: flex;
     flex-direction: column;

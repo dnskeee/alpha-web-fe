@@ -25,6 +25,15 @@
   opacity: 0.7;
 }
 
+/* On desktop the lesson has the global app bar + sidebar, so the in-reader
+   back button is redundant. (Below 1024px the lesson is a standalone reader
+   with no app bar, so the back button stays.) */
+@media (min-width: 1024px) {
+  .backButton {
+    display: none;
+  }
+}
+
 .center {
   flex: 1;
   overflow: hidden;

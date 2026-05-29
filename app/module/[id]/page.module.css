@@ -274,7 +274,7 @@
   display: block;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .pageHeader { display: none; }
   .tabWrap    { display: none; }
   .titleBlock { padding: 0 0 18px; }

@@ -8,10 +8,12 @@ import { BPPillButton } from '@/components/bp/BPPillButton';
 import { BackIcon } from '@/components/icons/BackIcon';
 import { useAuth } from '@/contexts/AuthContext';
 import { api } from '@/lib/api';
-import { ApiLessonDetail } from '@/types/api';
+import { ApiLessonDetail, ApiLessonListResponse } from '@/types/api';
 import { LessonModule } from '@/types/lesson';
 import { INSTANT_READY_TYPES, getReadyHint } from '@/components/lesson/cardReadiness';
 import { PageContainer } from '@/components/frame/PageContainer';
+import { BPAppBar } from '@/components/bp/BPAppBar';
+import { LessonSidebar } from './_components/LessonSidebar';
 import s from './page.module.css';
 
 export default function LessonScreen() {
@@ -26,6 +28,8 @@ export default function LessonScreen() {
   const [currentCard, setCurrentCard] = useState(0);
   const [completing, setCompleting] = useState(false);
   const [completedCards, setCompletedCards] = useState<Set<number>>(new Set());
+  const [lessonList, setLessonList] = useState<ApiLessonListResponse | null>(null);
+  const [lessonListLoading, setLessonListLoading] = useState(true);
 
   const lessonId = Number(id);
 
@@ -51,6 +55,15 @@ export default function LessonScreen() {
       .finally(() => {
         setLoading(false);
       });
+  }, [lessonId, withAuthOrGuest]);
+
+  useEffect(() => {
+    let cancelled = false;
+    withAuthOrGuest(() => api.lessons.getList(lessonId))
+      .then((data) => { if (!cancelled) setLessonList(data); })
+      .catch(() => { if (!cancelled) setLessonList(null); })
+      .finally(() => { if (!cancelled) setLessonListLoading(false); });
+    return () => { cancelled = true; };
   }, [lessonId, withAuthOrGuest]);
 
   const lesson = lessonData?.body as LessonModule | null;
@@ -170,80 +183,95 @@ export default function LessonScreen() {
 
   return (
     <div className={s.safe}>
-      <PageContainer variant="reader">
-        <div
-          className={s.container}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <LessonHeader
-            lessonNumber={lesson.lessonNumber ?? lessonData?.sortOrder}
-            estimatedTime={lesson.estimatedTime}
-            totalCards={lesson.cards.length}
-            currentCard={currentCard}
-            title={lessonData?.title}
-            onBack={() => router.back()}
+      <div className={s.appBarWrap}>
+        <BPAppBar />
+      </div>
+      <div className={s.body}>
+        <aside className={s.sidebarWrap}>
+          <LessonSidebar
+            lessons={lessonList?.lessons ?? []}
+            currentLessonId={lessonId}
+            moduleTitle={lessonList?.moduleTitle ?? ''}
+            loading={lessonListLoading}
           />
-
-          <div
-            ref={scrollRef}
-            className={s.scroll}
-          >
-            <div className={s.cardContent}>
-              <LessonCard
-                key={currentCard}
-                card={card}
-                xpReward={lesson.xpReward}
-                scrollRef={scrollRef}
-                onReadyChange={handleReadyChange}
+        </aside>
+        <div className={s.readerCol}>
+          <PageContainer variant="reader">
+            <div
+              className={s.container}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <LessonHeader
+                lessonNumber={lesson.lessonNumber ?? lessonData?.sortOrder}
+                estimatedTime={lesson.estimatedTime}
+                totalCards={lesson.cards.length}
+                currentCard={currentCard}
+                title={lessonData?.title}
+                onBack={() => router.back()}
               />
-            </div>
-          </div>
 
-          <div className={s.navWrap}>
-            <div className={s.nav}>
-              {currentCard > 0 && (
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  className={s.navBack}
-                  aria-label="Назад"
-                >
-                  <BackIcon size={20} color="var(--color-ink)" />
-                </button>
-              )}
-              {!isLast && (
-                <div className={s.navNextWrap}>
-                  <BPPillButton
-                    size="block"
-                    variant="primary"
-                    label={currentCardReady ? 'Далее →' : (hint ?? 'Далее →')}
-                    onClick={goNext}
-                    disabled={!currentCardReady}
+              <div
+                ref={scrollRef}
+                className={s.scroll}
+              >
+                <div className={s.cardContent}>
+                  <LessonCard
+                    key={currentCard}
+                    card={card}
+                    xpReward={lesson.xpReward}
+                    scrollRef={scrollRef}
+                    onReadyChange={handleReadyChange}
                   />
                 </div>
-              )}
-              {isLast && (
-                <div className={s.navNextWrap}>
-                  {completing ? (
-                    <div className={s.completingBox}>
-                      <div className={s.spinner} />
+              </div>
+
+              <div className={s.navWrap}>
+                <div className={s.nav}>
+                  {currentCard > 0 && (
+                    <button
+                      type="button"
+                      onClick={goPrev}
+                      className={s.navBack}
+                      aria-label="Назад"
+                    >
+                      <BackIcon size={20} color="var(--color-ink)" />
+                    </button>
+                  )}
+                  {!isLast && (
+                    <div className={s.navNextWrap}>
+                      <BPPillButton
+                        size="block"
+                        variant="primary"
+                        label={currentCardReady ? 'Далее →' : (hint ?? 'Далее →')}
+                        onClick={goNext}
+                        disabled={!currentCardReady}
+                      />
                     </div>
-                  ) : (
-                    <BPPillButton
-                      size="block"
-                      variant="primary"
-                      label="Завершить урок"
-                      onClick={handleComplete}
-                      disabled={completing || !currentCardReady}
-                    />
+                  )}
+                  {isLast && (
+                    <div className={s.navNextWrap}>
+                      {completing ? (
+                        <div className={s.completingBox}>
+                          <div className={s.spinner} />
+                        </div>
+                      ) : (
+                        <BPPillButton
+                          size="block"
+                          variant="primary"
+                          label="Завершить урок"
+                          onClick={handleComplete}
+                          disabled={completing || !currentCardReady}
+                        />
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
+              </div>
             </div>
-          </div>
+          </PageContainer>
         </div>
-      </PageContainer>
+      </div>
     </div>
   );
 }

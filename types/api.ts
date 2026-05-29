@@ -94,6 +94,12 @@ export interface ApiLessonDetail {
   progress: ApiProgress | null;
 }
 
+export interface ApiLessonListResponse {
+  moduleId: number;
+  moduleTitle: string;
+  lessons: ApiLesson[];
+}
+
 export interface StreakDay {
   date: string;        // YYYY-MM-DD
   hasActivity: boolean;

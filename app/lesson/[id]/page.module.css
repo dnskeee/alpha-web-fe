@@ -106,3 +106,72 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+.appBarWrap {
+  display: none;
+}
+
+.body {
+  display: contents;
+}
+
+.readerCol {
+  display: contents;
+}
+
+.sidebarWrap {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .safe {
+    height: 100dvh;
+  }
+
+  .appBarWrap {
+    display: block;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    max-width: var(--w-tabs);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 32px);
+    flex: 1;
+    min-height: 0;
+  }
+
+  .sidebarWrap {
+    display: block;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding-top: 16px;
+  }
+
+  .readerCol {
+    display: block;
+    position: relative;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* PageContainer "reader" caps width at --w-reader (480px) for the mobile
+     reader; on desktop the content column should fill the grid track instead. */
+  .readerCol > div {
+    max-width: none;
+    width: 100%;
+    padding-top: 16px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .container {
+    min-height: 0;
+    height: 100%;
+  }
+}
